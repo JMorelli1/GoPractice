@@ -1,19 +1,12 @@
 package main
 
-import(
-	"fmt"
-	"errors"
-	// "github.com/JMorelli1/GoPractice/models"
+import (
+	"net/http"
+
+	"github.com/JMorelli1/GoPractice/controllers"
 )
 
-func main(){
-	portUsed, errMsg := startServer(3000)
-	fmt.Println(portUsed, errMsg)
-}
-
-func startServer(port int) (int, error){
-	fmt.Println("Server starting.....")
-	
-	fmt.Println("Server started successfully")
-	return 3000, errors.New("Something went wrong")
+func main() {
+	controllers.RegisterControllers()
+	http.ListenAndServe(":3000", nil)
 }
